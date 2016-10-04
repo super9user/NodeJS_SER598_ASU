@@ -1,0 +1,64 @@
+<html>
+	<% if(user_agent.indexOf("chrome") > -1) {%>
+		<body style='background-color:pink;'>
+	<% } else { %>
+		<body>
+	<% } %>
+	
+
+    <% var langs = data.languages==undefined ? [] : data.languages %>
+    <% var avails = data.availability==undefined ? [] : data.availability %>
+    <form action='get_coders' method='get'>
+        First name: <input type='text' name='fname' value='<%= (data.fname==undefined ? "" : data.fname) %>'>
+        Last name: <input type='text' name='lname' value='<%= (data.lname==undefined ? "" : data.lname) %>'>
+        Experience (in years): <input type='number' name='experience' value='<%= (data.experience<0 ? "" : data.experience) %>'><br><br>
+        Languages:<br>
+            
+        <input type='checkbox' name='languages' value='java' <%= (langs.indexOf("java") > -1 ? "checked" : "") %> >Java
+        <input type='checkbox' name='languages' value='python' <%= (langs.indexOf("python") > -1 ? "checked" : "") %> >Python
+        <input type='checkbox' name='languages' value='ruby' <%= (langs.indexOf("ruby") > -1  ? "checked" : "") %> >Ruby
+        <input type='checkbox' name='languages' value='c' <%= (langs.indexOf("c") > -1  ? "checked" : "") %> >C
+        <input type='checkbox' name='languages' value='c++' <%= (langs.indexOf("c++") > -1 ? "checked" : "") %> >C++<br><br>
+
+        Availability:<br>
+        <input type='checkbox' name='availability' value='monday' <%= (avails.indexOf("monday") > -1 ? "checked" : "") %> >Monday
+        <input type='checkbox' name='availability' value='tuesday' <%= (avails.indexOf("tuesday") > -1 ? "checked" : "") %> >Tuesday
+        <input type='checkbox' name='availability' value='wednesday' <%= (avails.indexOf("wednesday") > -1 ? "checked" : "") %> >Wednesday
+        <input type='checkbox' name='availability' value='thursday' <%= (avails.indexOf("thursday") > -1 ? "checked" : "") %> >Thursday
+        <input type='checkbox' name='availability' value='friday' <%= (avails.indexOf("friday") > -1 ? "checked" : "") %> >Friday
+        <input type='checkbox' name='availability' value='saturday' <%= (avails.indexOf("saturday") > -1 ? "checked" : "") %> >Saturday
+        <input type='checkbox' name='availability' value='sunday' <%= (avails.indexOf("sunday") > -1 ? "checked" : "") %> >Sunday
+        <br>
+        <br><input type='submit' value='Filter Results'>
+    </form>
+
+
+	<br> <h3>RESULTS</h3>
+
+	<% 
+		for(var index in entries){
+			var entry = entries[index];
+	%>
+			<div>
+				Name:  <%= entry.fname %> <%= entry.lname %> 
+				<br>Languages:
+				<%
+					for(var l in entry.languages){
+			            var str = entry.languages[l];
+			    %>
+			              <%= str.charAt(0).toUpperCase() + str.slice(1) %>
+			    <% } %>
+		        <br>Availability:
+		        <%
+		        	for(var a in entry.availability){
+			            var str = entry.availability[a];
+			    %>
+			              <%= str.charAt(0).toUpperCase() + str.slice(1) %>
+			    <% } %>
+		        <br>Experience: <%= entry.experience<0 ? "" : (entry.experience + " years") %>
+		        <hr>
+		    </div>
+	<% } %>
+
+	</body>
+</html>

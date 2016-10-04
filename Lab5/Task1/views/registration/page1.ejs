@@ -1,0 +1,10 @@
+<html>
+	<body>
+	    <form action="post_coder" method="post">
+		    First name: <input type="text" name="fname" value='<%= (data.fname==undefined ? "" : data.fname) %>'><br>
+		    Last name: <input type="text" name="lname" value='<%= (data.lname==undefined ? "" : data.lname) %>'><br>
+		    <input type="hidden" name="page" value="1">
+		    <br><input name="submit" type="submit" value="next" />
+		</form>
+	</body>
+</html>

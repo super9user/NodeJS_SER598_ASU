@@ -1,0 +1,36 @@
+<html>
+	<% if(user_agent.indexOf("chrome") > -1) {%>
+		<body style='background-color:pink;'>
+	<% } else { %>
+		<body>
+	<% } %>
+
+	<br> <h3>RESULTS</h3>
+
+	<% 
+		for(var index in entries){
+			var entry = entries[index];
+	%>
+			<div>
+				Name:  <%= entry.fname %> <%= entry.lname %> 
+				<br>Languages:
+				<%
+					for(var l in entry.languages){
+			            var str = entry.languages[l];
+			    %>
+			              <%= str.charAt(0).toUpperCase() + str.slice(1) %>
+			    <% } %>
+		        <br>Availability:
+		        <%
+		        	for(var a in entry.availability){
+			            var str = entry.availability[a];
+			    %>
+			              <%= str.charAt(0).toUpperCase() + str.slice(1) %>
+			    <% } %>
+		        <br>Experience: <%= entry.experience<0 ? "" : (entry.experience + " years") %>
+		        <hr>
+		    </div>
+	<% } %>
+
+	</body>
+</html>

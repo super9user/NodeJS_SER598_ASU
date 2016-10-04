@@ -1,0 +1,18 @@
+<html>
+	<body>
+		<% var langs = data.languages==undefined ? [] : data.languages %>
+	    <form action="post_coder" method="post">
+		    Languages:<br>
+            
+			<input type='checkbox' name='languages' value='java' <%= (langs.indexOf("java") > -1 ? "checked" : "") %> >Java
+			<input type='checkbox' name='languages' value='python' <%= (langs.indexOf("python") > -1 ? "checked" : "") %> >Python
+			<input type='checkbox' name='languages' value='ruby' <%= (langs.indexOf("ruby") > -1  ? "checked" : "") %> >Ruby
+			<input type='checkbox' name='languages' value='c' <%= (langs.indexOf("c") > -1  ? "checked" : "") %> >C
+			<input type='checkbox' name='languages' value='c++' <%= (langs.indexOf("c++") > -1 ? "checked" : "") %> >C++<br><br>
+
+		    <input type="hidden" name="page" value="3">
+
+		    <br><input name="submit" type="submit" value="back" />  <input name="submit" type="submit" value="next" />
+		</form>
+	</body>
+</html>

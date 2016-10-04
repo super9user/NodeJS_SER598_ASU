@@ -1,0 +1,33 @@
+<html>
+	<body>
+		<div>
+			Name:  <%= data.fname %> <%= data.lname %> 
+			<br>Languages:
+			<%
+				for(var l in data.languages){
+					var str = data.languages[l];
+			%>
+				<%= str.charAt(0).toUpperCase() + str.slice(1) %>
+			<% } %>
+			<br>Availability:
+			<%
+				for(var a in data.availability){
+					var str = data.availability[a];
+			%>
+				<%= str.charAt(0).toUpperCase() + str.slice(1) %>
+			<% } %>
+
+			<br>Experience: <%= data.experience<0 ? "" : (data.experience + " years") %>
+			<hr>
+
+		</div>
+
+		<form action='post_coder' method='post'>
+			<input type="hidden" name="page" value="5">
+			<input type='submit' name='submit' value='back' />
+			<input type='submit' name='submit' value='cancel' /> 
+			<input type='submit' name='submit' value='create' />
+		</form>
+
+	</body>
+</html>

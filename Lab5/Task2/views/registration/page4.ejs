@@ -1,0 +1,20 @@
+<html>
+	<body>
+		<% var avails = data.availability==undefined ? [] : data.availability %>
+		
+	    <form action="post_coder" method="post">
+			Availability:<br>
+			<input type='checkbox' name='availability' value='monday' <%= (avails.indexOf("monday") > -1 ? "checked" : "") %> >Monday
+			<input type='checkbox' name='availability' value='tuesday' <%= (avails.indexOf("tuesday") > -1 ? "checked" : "") %> >Tuesday
+			<input type='checkbox' name='availability' value='wednesday' <%= (avails.indexOf("wednesday") > -1 ? "checked" : "") %> >Wednesday
+			<input type='checkbox' name='availability' value='thursday' <%= (avails.indexOf("thursday") > -1 ? "checked" : "") %> >Thursday
+			<input type='checkbox' name='availability' value='friday' <%= (avails.indexOf("friday") > -1 ? "checked" : "") %> >Friday
+			<input type='checkbox' name='availability' value='saturday' <%= (avails.indexOf("saturday") > -1 ? "checked" : "") %> >Saturday
+			<input type='checkbox' name='availability' value='sunday' <%= (avails.indexOf("sunday") > -1 ? "checked" : "") %> >Sunday
+			<br>
+		    <input type="hidden" name="page" value="4">
+
+		    <br><input name="submit" type="submit" value="back" />  <input name="submit" type="submit" value="next" />
+		</form>
+	</body>
+</html>

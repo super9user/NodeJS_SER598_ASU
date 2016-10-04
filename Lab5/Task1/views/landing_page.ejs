@@ -1,0 +1,35 @@
+<html>
+<head><title>Landing Page</title></head>
+<body>
+Welcome <b> <%= fname %> <%= lname%> </b><br/>
+Not you? Click <a href='registration'>here</a>
+<br> <h4>Top Matching Profiles For You:</h4>
+
+<% 
+		for(var index in matching_entries){
+			var entry = matching_entries[index];
+	%>
+			<div>
+				Name:  <%= entry.fname %> <%= entry.lname %> 
+				<br>Languages:
+				<%
+					for(var l in entry.languages){
+			            var str = entry.languages[l];
+			    %>
+			              <%= str.charAt(0).toUpperCase() + str.slice(1) %>
+			    <% } %>
+		        <br>Availability:
+		        <%
+		        	for(var a in entry.availability){
+			            var str = entry.availability[a];
+			    %>
+			              <%= str.charAt(0).toUpperCase() + str.slice(1) %>
+			    <% } %>
+		        <br>Experience: <%= entry.experience<0 ? "" : (entry.experience + " years") %>
+		        <hr>
+		    </div>
+	<% } %>
+
+<br/><a href='get_coders'>View All Entries</a>
+</body>
+</html>
